@@ -10,15 +10,14 @@ const server = Fastify({ logger: true }).withTypeProvider<JsonSchemaToTsProvider
 
 const createList = (teasers: TeaserApi[]) => {
 	return teasers
-		.map((t) => `<div class="container">${renderTeaser(t, { experimentalBrickImage: true })}</div>`)
+		.map((t) => `<div class="container ${t.size}">${renderTeaser(t, { experimentalBrickImage: true })}</div>`)
 		.join("");
 };
 
 server.get("/", (request, reply) => {
 	const l1 = createList(teasers.slice(0, 3));
-	const l2 = createList(teasers.slice(3, 5));
-	const l3 = createList(teasers.slice(5, 6));
-	const renderedTeasers = teasers.map((t) => renderTeaser(t, { experimentalBrickImage: true })).join("");
+	const l2 = createList(teasers.slice(3, 6));
+	const l3 = createList(teasers.slice(6, 9));
 	reply.type("text/html");
 	return View({ l1, l2, l3, css: getCssText() });
 });
