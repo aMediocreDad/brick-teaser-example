@@ -3,9 +3,8 @@ export default ({ l1, l2, l3, css }) => /* html */ `
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Example</title>
 	<style>
 		${css}
 	</style>
@@ -42,6 +41,7 @@ export default ({ l1, l2, l3, css }) => /* html */ `
 			overflow: clip;
 			height: 100%;
 		}
+
 		brick-teaser .body {
 			padding: 0 0.5rem 0.5rem !important;
 		}

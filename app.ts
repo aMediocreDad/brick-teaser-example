@@ -2,19 +2,17 @@ import "./polyfill.js";
 
 import Fastify from "fastify";
 import { JsonSchemaToTsProvider } from "@fastify/type-provider-json-schema-to-ts";
-import { renderTeaser, getCssText, type TeaserApi } from "@amedia/brick-teaser";
+import { renderTeaser, getCssText } from "@amedia/brick-teaser";
 import teasers from "./data.json" assert { type: "json" };
 import View from "./view";
 
 const server = Fastify({ logger: true }).withTypeProvider<JsonSchemaToTsProvider>();
 
-const createList = (teasers: TeaserApi[]) => {
-	return teasers
-		.map((t) => `<div class="container ${t.size}">${renderTeaser(t, { experimentalBrickImage: true })}</div>`)
-		.join("");
+const createList = (teasers: any[]) => {
+	return teasers.map((t) => `<div class="container ${t.size}">${renderTeaser(t)}</div>`).join("");
 };
 
-server.get("/", (request, reply) => {
+server.get("/", (_request, reply) => {
 	const l1 = createList(teasers.slice(0, 3));
 	const l2 = createList(teasers.slice(3, 6));
 	const l3 = createList(teasers.slice(6, 9));
@@ -30,4 +28,5 @@ const start = async () => {
 		process.exit(1);
 	}
 };
+
 start();

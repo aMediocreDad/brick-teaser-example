@@ -11,7 +11,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@amedia/brick-teaser": "file:../brick/packages/brick-teaser",
+		"@amedia/brick-teaser": "11.4.1",
 		"@fastify/type-provider-json-schema-to-ts": "2.1.1",
 		"@types/node": "18.11.9",
 		"fastify": "4.9.2",
